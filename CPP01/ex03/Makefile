@@ -1,10 +1,11 @@
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -I.
-NAME = phonebook
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+NAME = UnnecessaryViolence
 
 SRC = main.cpp \
-	  Contact.cpp \
-	  PhoneBook.cpp 
+	  Weapon.cpp \
+	  HumanA.cpp \
+	  HumanB.cpp
 
 OBJ = $(patsubst %.cpp, %.o, $(SRC))
 
