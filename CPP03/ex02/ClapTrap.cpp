@@ -51,3 +51,25 @@ uint ClapTrap::getAD( void )
 {
 	return (_attackDamage);
 }
+
+ClapTrap::ClapTrap( void )
+{
+	std::cout << "ClapTrap Default Constructor Called" << std::endl;
+}
+
+ClapTrap::ClapTrap( const ClapTrap&  other )
+{
+	this->_attackDamage = other._attackDamage;
+	this->_energyPoints = other._energyPoints;
+	this->_hitPoints = other._hitPoints;
+	this->_name = other._name;
+}
+
+ClapTrap& ClapTrap::operator=( const ClapTrap& other )
+{
+	this->_attackDamage = other._attackDamage;
+	this->_energyPoints = other._energyPoints;
+	this->_hitPoints = other._hitPoints;
+	this->_name = other._name;
+	return *this;
+}
