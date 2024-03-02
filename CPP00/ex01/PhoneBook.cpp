@@ -5,7 +5,6 @@ void	PhoneBook::AddContact()
 	Contact		newContact;
 	std::string	tmp;
 	
-	fflush(stdin);
 	while (!newContact.SetFirstName(tmp))
 		std::cout << "First Name: ", std::getline(std::cin, tmp);
 	tmp.clear();

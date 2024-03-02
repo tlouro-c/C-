@@ -1,9 +1,7 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
-#include <chrono>
-#include <thread>
+#include <cstdio>
 
-void	OpeningPhonebook();
 
 int	main(void)
 {
@@ -11,10 +9,8 @@ int	main(void)
 	std::string	input;
 	int			index;
 
-	OpeningPhonebook();
 	while (input != "EXIT")
 	{
-		fflush(stdin);
 		std::cout << std::endl<< "Use ADD, SEARCH or EXIT" << std::endl;
 		std::cin >> input;
 		if (input == "ADD")
@@ -34,13 +30,3 @@ int	main(void)
 	return (0);
 }
 
-void	OpeningPhonebook()
-{
-	std::cout << "Opening Phonebook" << std::flush;
-	std::this_thread::sleep_for(std::chrono::milliseconds(500));
-	std::cout << "." << std::flush;
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
-	std::cout << "." << std::flush;
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
-	std::cout << "." << std::endl;
-}

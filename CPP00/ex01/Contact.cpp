@@ -47,16 +47,16 @@ bool	Contact::SetPhoneNumber(std::string newPhoneNumber)
 
 void Contact::TruncateContact()
 {
-	if (firstName.length() > 10)
-		firstName.resize(10); firstName[9] = '.';
-	if (lastName.length() > 10)
-		lastName.resize(10); lastName[9] = '.';
-	if (nickName.length() > 10)
-		nickName.resize(10); nickName[9] = '.';
-	if (phoneNumber.length() > 10)
-		phoneNumber.resize(10); phoneNumber[9] = '.';
-	if (darkestSecret.length() > 10)
-		darkestSecret.resize(10); darkestSecret[9] = '.';
+	if (firstName.length() > 10){
+		firstName.resize(10); firstName[9] = '.';}
+	if (lastName.length() > 10){
+		lastName.resize(10); lastName[9] = '.';}
+	if (nickName.length() > 10){
+		nickName.resize(10); nickName[9] = '.';}
+	if (phoneNumber.length() > 10){
+		phoneNumber.resize(10); phoneNumber[9] = '.';}
+	if (darkestSecret.length() > 10){
+		darkestSecret.resize(10); darkestSecret[9] = '.';}
 }
 
 std::ostream& operator<< (std::ostream& out, const Contact &contact)
