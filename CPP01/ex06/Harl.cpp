@@ -1,5 +1,7 @@
 #include "Harl.hpp"
 
+#define FALLTHROUGH do { } while(0)
+
 void	Harl::complain( std::string level )
 {
 	int	index = ((level == "DEBUG") * 1) + ((level == "INFO") * 2)
@@ -11,14 +13,14 @@ void	Harl::complain( std::string level )
 			ignore();
 			break ;
 		}
-		case 1:
-			debug();
-		case 2:
-			info();
-		case 3:
-			warning();
-		case 4:
-			error();
+		case 1:{
+			debug(); __attribute__ ((fallthrough));}
+		case 2:{
+			info(); __attribute__ ((fallthrough));}
+		case 3:{
+			warning(); __attribute__ ((fallthrough));}
+		case 4:{
+			error(); break ;}
 	}
 }
 

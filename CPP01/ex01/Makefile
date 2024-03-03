@@ -3,7 +3,10 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = MoarBrainz!
 
 SRC = main.cpp \
-	  Zombie.cpp
+	  Zombie.cpp \
+	  newZombie.cpp \
+	  randomChump.cpp \
+	  zombieHorde.cpp
 
 OBJ = $(patsubst %.cpp, %.o, $(SRC))
 

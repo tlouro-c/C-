@@ -3,7 +3,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = BraiiiiiiinnnzzzZ
 
 SRC = main.cpp \
-	  Zombie.cpp
+	  Zombie.cpp \
+	  randomChump.cpp \
+	  newZombie.cpp
 
 OBJ = $(patsubst %.cpp, %.o, $(SRC))
 
