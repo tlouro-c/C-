@@ -3,7 +3,8 @@
 
 # include <string>
 # include <iostream>
-
+# include <cctype>
+	
 class Contact{
 public:
 	std::string	GetFirstName()const {return firstName;}

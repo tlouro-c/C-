@@ -4,32 +4,60 @@ bool	Contact::SetFirstName(std::string newFirstName)
 {
 	if (newFirstName.empty())
 		return (false);
-	firstName = newFirstName;
-	return (true);
+	for (int i = 0; newFirstName[i]; i++)
+	{
+		if (!std::isspace(newFirstName[i]))
+		{
+			firstName = newFirstName;
+			return (true);
+		}
+	}
+	return (false);
 }
 
 bool	Contact::SetLastName(std::string newLastName)
 {
 	if (newLastName.empty())
 		return (false);
-	lastName = newLastName;
-	return (true);
+	for (int i = 0; newLastName[i]; i++)
+	{
+		if (!std::isspace(newLastName[i]))
+		{
+			lastName = newLastName;
+			return (true);
+		}
+	}
+	return (false);
 }
 
 bool	Contact::SetNickName(std::string newNickName)
 {
 	if (newNickName.empty())
 		return (false);
-	nickName = newNickName;
-	return (true);
+	for (int i = 0; newNickName[i]; i++)
+	{
+		if (!std::isspace(newNickName[i]))
+		{
+			nickName = newNickName;
+			return (true);
+		}
+	}
+	return (false);
 }
 
 bool	Contact::SetDarkestSecret(std::string newDarkestSecret)
 {
 	if (newDarkestSecret.empty())
 		return (false);
-	darkestSecret = newDarkestSecret;
-	return (true);
+	for (int i = 0; newDarkestSecret[i]; i++)
+	{
+		if (!std::isspace(newDarkestSecret[i]))
+		{
+			darkestSecret = newDarkestSecret;
+			return (true);
+		}
+	}
+	return (false);
 }
 
 bool	Contact::SetPhoneNumber(std::string newPhoneNumber)

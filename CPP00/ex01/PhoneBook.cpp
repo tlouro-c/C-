@@ -1,5 +1,7 @@
 #include "PhoneBook.hpp"
 
+int	PhoneBook::addedContacts = 0;
+
 void	PhoneBook::AddContact()
 {
 	Contact		newContact;

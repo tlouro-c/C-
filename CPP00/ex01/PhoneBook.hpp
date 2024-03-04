@@ -12,7 +12,7 @@ public:
 	int		GetTotalAddedContacts()const {return addedContacts;}
 	Contact	SearchByIndex(int index)const;
 private:
-	int		addedContacts;
+	static int		addedContacts;
 	Contact contacts[8];
 };
 
