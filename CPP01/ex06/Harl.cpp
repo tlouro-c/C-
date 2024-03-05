@@ -1,11 +1,14 @@
 #include "Harl.hpp"
 
-#define FALLTHROUGH do { } while(0)
-
 void	Harl::complain( std::string level )
 {
 	int	index = ((level == "DEBUG") * 1) + ((level == "INFO") * 2)
 		+((level == "WARNING") * 3) + ((level == "ERROR") * 4);
+	if (!index)
+		level = "Probably complaining about insignificant problems";
+
+	std::cout << "[ " << level << " ]" << std::endl;
+
 	switch (index)
 	{
 		case 0:
@@ -13,14 +16,14 @@ void	Harl::complain( std::string level )
 			ignore();
 			break ;
 		}
-		case 1:{
-			debug(); __attribute__ ((fallthrough));}
-		case 2:{
-			info(); __attribute__ ((fallthrough));}
-		case 3:{
-			warning(); __attribute__ ((fallthrough));}
-		case 4:{
-			error(); break ;}
+		case 1:
+			debug();
+		case 2:
+			info();
+		case 3:
+			warning();
+		case 4:
+			error();
 	}
 }
 
@@ -44,7 +47,4 @@ void	Harl::error( void )
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void	Harl::ignore( void )
-{
-	std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-}
+void	Harl::ignore( void ){};
