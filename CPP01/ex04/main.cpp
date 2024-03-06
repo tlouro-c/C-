@@ -16,6 +16,12 @@ int	main(int argc, char *argv[])
 	if (!inputFile)
 		return (std::cerr << argv[1] << ": Unable to open file" << std::endl, 1);
 	needle = argv[2];
+	if (needle.empty())
+	{
+		std::cerr << "Don't try to break me :c" << std::endl;
+		inputFile.close();
+		return (1);
+	}
 	replaceString = argv[3];
 	output_filename = static_cast<std::string>(argv[1]) + ".replace";
 	std::ofstream replaceFile(output_filename.c_str());
@@ -32,5 +38,5 @@ int	main(int argc, char *argv[])
 	}
 	replaceFile.close();
 	inputFile.close();
-	return 0;
+	return (0);
 }
