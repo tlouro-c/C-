@@ -4,9 +4,9 @@ NAME = Polymorphism
 
 SRC = main.cpp \
 	  Animal.cpp \
-	  Cat.cpp \
-	  Dog.cpp \
 	  WrongAnimal.cpp \
+	  Dog.cpp \
+	  Cat.cpp \
 	  WrongCat.cpp
 
 OBJ = $(patsubst %.cpp, %.o, $(SRC))

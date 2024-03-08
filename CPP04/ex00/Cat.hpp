@@ -3,11 +3,12 @@
 
 # include "Animal.hpp"
 
-class Cat : public Animal{
+class Cat : public Animal {
 public:
 	Cat( void );
-	~Cat ( void );
-	void	makeSound ( void ) const ;
+	~Cat( void );
+	Cat( const Cat& other );
+	void makeSound( void ) const;
 };
 
 #endif

@@ -4,15 +4,17 @@
 # include <string>
 # include <iostream>
 
-class WrongAnimal{
+class WrongAnimal {
+public:
+	WrongAnimal( void );
+	WrongAnimal( const WrongAnimal& other );
+	virtual ~WrongAnimal( void );
+	WrongAnimal& operator=( const WrongAnimal& other);
+	void makeSound( void ) const;
+	std::string getType( void ) const;
 protected:
 	std::string _type;
-public:
-	WrongAnimal ( void );
-	~WrongAnimal ( void );
-	WrongAnimal ( std::string type );
-	std::string	getType ( void ) const { return _type; }
-	void	makeSound ( void ) const ;
+	WrongAnimal( std::string type );
 };
 
 #endif

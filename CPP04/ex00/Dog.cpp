@@ -1,16 +1,25 @@
 #include "Dog.hpp"
 
-Dog::Dog( void ) : Animal("Dog")
+void Dog::makeSound( void ) const
 {
-	std::cout << "Dog constructor called" << std::endl;
+	std::cout << "Dog is barking..." << std::endl;
+}
+
+//* Canonical Mandatory
+
+Dog::Dog( void ) : Animal( "Dog" )
+{
+	std::cout << "Dog Default Constructor Call" << std::endl;
 }
 
 Dog::~Dog( void )
 {
-	std::cout << "Dog desctructor called" << std::endl;
+	std::cout << "Dog Default Destructor Call" << std::endl;
 }
 
-void	Dog::makeSound ( void ) const
+Dog::Dog( const Dog& other )
 {
-	std::cout << "wuof" << std::endl;
+	*this = other;
+	std::cout << "Dog Copy Constructor Call" << std::endl;
 }
+

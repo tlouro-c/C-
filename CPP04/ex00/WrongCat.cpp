@@ -1,16 +1,24 @@
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat( void ) : WrongAnimal("WrongCat")
+void WrongCat::makeSound( void ) const
 {
-	std::cout << "WrongCat constructor called" << std::endl;
+	std::cout << "WrongCat is purring..." << std::endl;
+}
+
+//* Canonical Mandatory
+
+WrongCat::WrongCat( void ) : WrongAnimal( "WrongCat" )
+{
+	std::cout << "WrongCat Default Constructor Call" << std::endl;
 }
 
 WrongCat::~WrongCat( void )
 {
-	std::cout << "WrongCat desctructor called" << std::endl;
+	std::cout << "WrongCat Default Destructor Call" << std::endl;
 }
 
-void	WrongCat::makeSound ( void ) const
+WrongCat::WrongCat( const WrongCat& other)
 {
-	std::cout << "meow" << std::endl;
+	*this = other;
+	std::cout << "WrongCat Copy Constructor Call" << std::endl;
 }

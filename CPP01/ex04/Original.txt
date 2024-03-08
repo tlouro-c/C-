@@ -1,4 +1,4 @@
-Hello World!
+Hello World!\n
 This
 Is
 Sed Is For Losers

@@ -1,32 +1,40 @@
 #include "Animal.hpp"
 
-Animal::Animal ( std::string type) : _type(type)
+void Animal::makeSound( void ) const
 {
-	std::cout << "Animal constructor called" << std::endl;
+	std::cout << "Generic Animal Sound" << std::endl;
 }
 
-Animal::Animal ( void )
+std::string Animal::getType( void ) const
 {
-	std::cout << "Animal constructor called" << std::endl;
+	return (_type);
 }
 
-Animal::~Animal ( void )
+Animal::Animal( std::string type ) : _type( type)
 {
-	std::cout << "Generic Animal destructor called" << std::endl;
+	std::cout << "Generic Animal Type Constructor Call" << std::endl;
 }
 
-void	Animal::makeSound ( void ) const
+//* Canonical Mandatory
+
+Animal::Animal( void ) : _type("Generic Animal")
 {
-	std::cout << "Generic Animal Sound" << std::endl; 
+	std::cout << "Generic Animal Default Constructor Call" << std::endl;
 }
 
-Animal::Animal ( const Animal& other )
+Animal::~Animal( void )
 {
-	this->_type = other._type;
+	std::cout << "Generic Animal Default Destructor Call" << std::endl;
 }
 
-Animal& Animal::operator=( const Animal& other )
+Animal::Animal( const Animal& other)
 {
-	this->_type = other._type;
-	return *this;
+	*this = other;
+	std::cout << "Generic Animal Copy Constructor Call" << std::endl;
+}
+
+Animal& Animal::operator=( const Animal& other)
+{
+	_type = other._type;
+	return (*this);
 }
