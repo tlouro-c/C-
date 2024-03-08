@@ -32,7 +32,7 @@ void ClapTrap::attack( const std::string& target )
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (_hitPoints - amount < 0)
+	if (amount > _hitPoints)
 		_hitPoints = 0;
 	else
 		_hitPoints -= amount;

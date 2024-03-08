@@ -5,6 +5,9 @@ int	main( void )
 {
 	ClapTrap	Wall_e( "Wall-e" );
 	ScavTrap	Eva( "Eva" );
+	ScavTrap	Dummy;
+
+	Dummy = Eva;
 
 	for (int i = 0; i <= 10; i++)
 	{

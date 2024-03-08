@@ -8,6 +8,7 @@ public:
 	FragTrap( std::string name );
 	~FragTrap( void );
 	void highFivesGuys( void );
+	void attack( const std::string& target );
 };
 
 #endif
