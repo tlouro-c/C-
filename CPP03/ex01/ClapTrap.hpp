@@ -4,6 +4,8 @@
 # include <string>
 # include <iostream>
 
+typedef unsigned int uint;
+
 class ClapTrap{
 protected:
 	std::string _name;
