@@ -32,5 +32,7 @@ int	main( void )
 	Dog2.setIdea(0, "I changed my mind");
 	std::cout << "Dog1's mind -> " << Dog1.getIdea(0) << std::endl;
 
+	//Animal rat; //! Can't initialize because it's an Abstract Class
+
 	return (0);
 }
