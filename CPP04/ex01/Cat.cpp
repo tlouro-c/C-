@@ -28,10 +28,9 @@ Cat::~Cat( void )
 	std::cout << "Cat Default Destructor Call" << std::endl;
 }
 
-Cat::Cat( const Cat& other)
+Cat::Cat( const Cat& other) : Animal( other ), _brain ( new Brain )
 {
 	*this = other;
-	this->_brain = other._brain;
 	std::cout << "Cat Copy Constructor Call" << std::endl;
 }
 

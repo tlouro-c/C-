@@ -29,7 +29,7 @@ Dog::~Dog( void )
 	std::cout << "Dog Default Destructor Call" << std::endl;
 }
 
-Dog::Dog( const Dog& other )
+Dog::Dog( const Dog& other ) : Animal( other ), _brain( new Brain )
 {
 	*this = other;
 	std::cout << "Dog Copy Constructor Call" << std::endl;
