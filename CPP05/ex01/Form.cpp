@@ -1,6 +1,7 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
-Form::Form( void ) : _signGrade( 150 ), _execGrade( 150 ), _isSigned ( false ) {}
+Form::Form( void ) : _isSigned ( false ), _signGrade( 150 ), _execGrade( 150 ) {}
 
 Form::Form( std::string name, unsigned int signGrade, unsigned int execGrade ) : _name( name ),
 																				_isSigned( false ),
@@ -53,10 +54,11 @@ void	Form::beSigned( const Bureaucrat& bureaucrat )
 
 std::ostream& operator<<( std::ostream& os, const Form& Form )
 {
-	os << "Form name: " << Form.getName() << "\n";
-	os << "Form Signed? " << Form.getIsSigned() ? "Yes\n" : "No\n";
+	
+	os << "-\nForm name: " << Form.getName() << "\n";
+	os << "Form Signed? " << (Form.getIsSigned() ? "Yes\n" : "No\n");
 	os << "Sign Grade: " << Form.getSignGrade() << "\n";
-	os << "Execution Grade " << Form.getExecGrade() << std::endl;
+	os << "Execution Grade " << Form.getExecGrade() << "\n-" << std::endl;
 	return (os);
 }
 
