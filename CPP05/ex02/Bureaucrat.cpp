@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat ( void ) :  _grade( 150 ) {}
 
@@ -53,13 +53,24 @@ void	Bureaucrat::decrementGrade( void )
 	_grade++;
 }
 
-void	Bureaucrat::signForm( Form& form )
+void	Bureaucrat::signAForm( AForm& AForm )
 {
-	if (form.getSignGrade() < _grade){
-		std::cout << _name << " couldn't sign " << form.getName() << " because grade is too low..."<< std::endl; return; }
+	if (AForm.getSignGrade() < _grade){
+		std::cout << _name << " couldn't sign " << AForm.getName() << " because grade is too low..."<< std::endl; return;}
 	else{
-		std::cout << _name << " signed " << form.getName() << std::endl; return; }
-	form.beSigned(*this);
+		std::cout << _name << " signed " << AForm.getName() << std::endl; return; }
+	AForm.beSigned(*this);
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	if (!form.getIsSigned()){
+		std::cout << "The form must be signed before execution..." << std::endl; return; }
+	else if (_grade >= form.getExecGrade()){
+		std::cout << "Grade too low..." << std::endl; return; }
+	else
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	form.execute(*this);
 }
 
 //* Nested Exception Classes
