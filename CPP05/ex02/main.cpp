@@ -21,14 +21,14 @@ int	main( void )
 			std::cout << Forms[i]->getName() << "was signed." << std::endl; 
 			Forms[i]->execute(Luis);
 			std::cout << Forms[i]->getName() << "was executed." << std::endl; 
-			delete(Forms[i]);
-			Forms[i] = nullptr;
 		}
 	}
 	catch (std::exception& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
+	for (int i = 0; i < 3 && Forms[i]; i++){
+			delete(Forms[i]); Forms[i] = NULL;}
 	std::cout << "-----------\n" << std::endl;
 	std::cout << "Try to sign and execute forms using the methods from the Bureaucrat Class\n" << std::endl;
 	try
@@ -41,12 +41,12 @@ int	main( void )
 		{
 			Luis.signAForm(*Forms[i]);
 			Luis.executeForm(*Forms[i]);
-			delete(Forms[i]);
-			Forms[i] = nullptr;
 		}
 	}
 	catch (std::exception& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
+	for (int i = 0; i < 3 && Forms[i]; i++){
+			delete(Forms[i]); Forms[i] = NULL;}
 }

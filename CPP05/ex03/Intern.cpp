@@ -2,7 +2,7 @@
 
 AForm* Intern::makeForm( std::string formName, std::string target)
 {
-	AForm *PossibleForms[4] = {nullptr,
+	AForm *PossibleForms[4] = {NULL,
 							new ShrubberyCreationForm(target),
 							new PresidentialPardonForm(target),
 							new RobotomyRequestForm(target)};

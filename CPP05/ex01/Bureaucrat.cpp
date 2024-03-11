@@ -64,12 +64,12 @@ void	Bureaucrat::signForm( Form& form )
 
 //* Nested Exception Classes
 
-const char* Bureaucrat::GradeTooLowException::what() const _NOEXCEPT
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Grade is too low...");
 }
 
-const char* Bureaucrat::GradeTooHighException::what() const _NOEXCEPT
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Grade is too high...");
 }

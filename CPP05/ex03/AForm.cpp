@@ -64,17 +64,17 @@ std::ostream& operator<<( std::ostream& os, const AForm& AForm )
 
 //* Nested Exception Classes
 
-const char* AForm::GradeTooLowException::what() const _NOEXCEPT
+const char* AForm::GradeTooLowException::what() const throw()
 {
 	return ("Grade is too low...");
 }
 
-const char* AForm::GradeTooHighException::what() const _NOEXCEPT
+const char* AForm::GradeTooHighException::what() const throw()
 {
 	return ("Grade is too high...");
 }
 
-const char* AForm::FormNotSigned::what() const _NOEXCEPT 
+const char* AForm::FormNotSigned::what() const throw() 
 {
 	return ("Form needs to be signed first...");
 }

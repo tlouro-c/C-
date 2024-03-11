@@ -14,7 +14,6 @@ PresidentialPardonForm& PresidentialPardonForm::operator=( const PresidentialPar
 
 void PresidentialPardonForm::execute(const Bureaucrat& executor) const
 {
-	std::srand(std::time(NULL));
 	if (!this->getIsSigned())
 		throw FormNotSigned();
 	else if (executor.getGrade() >= this->getExecGrade())

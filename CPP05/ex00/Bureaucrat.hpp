@@ -21,12 +21,12 @@ private:
 
 	class GradeTooLowException : public std::exception {
 	public:
-		const char* what() const _NOEXCEPT;
+		const char* what() const throw();
 	};
 
 	class GradeTooHighException : public std::exception {
 	public:
-		const char* what() const _NOEXCEPT;
+		const char* what() const throw();
 	};
 };
 

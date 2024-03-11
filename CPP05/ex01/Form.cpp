@@ -64,12 +64,12 @@ std::ostream& operator<<( std::ostream& os, const Form& Form )
 
 //* Nested Exception Classes
 
-const char* Form::GradeTooLowException::what() const _NOEXCEPT
+const char* Form::GradeTooLowException::what() const throw()
 {
 	return ("Grade is too low...");
 }
 
-const char* Form::GradeTooHighException::what() const _NOEXCEPT
+const char* Form::GradeTooHighException::what() const throw()
 {
 	return ("Grade is too high...");
 }

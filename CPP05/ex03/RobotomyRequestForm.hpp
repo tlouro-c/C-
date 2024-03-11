@@ -4,6 +4,7 @@
 # include "AForm.hpp"
 # include <fstream>
 # include <ctime>
+# include <cstdlib> 
 # include "Bureaucrat.hpp"
 
 //? class Bureaucrat;
