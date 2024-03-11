@@ -10,6 +10,8 @@ AForm* Intern::makeForm( std::string formName, std::string target)
 						+ ((formName == "PresidentialPardonForm") * 2)
 						+ ((formName == "RobotomyRequestForm") * 3);
 	AForm *finalSelection = PossibleForms[formNamesIndex];
+	if (!finalSelection)
+		std::cerr << "Not a valid form name!" << std::endl;
 	for (int i = 1; i < 4; i++)
 	{
 		if (PossibleForms[i] != finalSelection)
@@ -17,3 +19,16 @@ AForm* Intern::makeForm( std::string formName, std::string target)
 	}
 	return (finalSelection);
 }
+
+Intern::Intern() {}
+
+Intern::Intern(const Intern& other) {(void)other;}
+
+Intern& Intern::operator=(const Intern& other)
+{
+	(void)other;
+	return (*this);
+}
+
+Intern::~Intern() {}
+

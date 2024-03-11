@@ -20,7 +20,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 		throw FormNotSigned();
 	else if (executor.getGrade() >= this->getExecGrade())
 		throw GradeTooLowException();
-  std::string filename = _target + "_shrubbery";
+	std::string filename = _target + "_shrubbery";
 	target_file.open(filename.c_str());
 	target_file << 
 	"                                                                    ..;===+. \n\
@@ -62,3 +62,6 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 	target_file.close();
 }
 
+ShrubberyCreationForm::ShrubberyCreationForm( void ) : AForm() {}
+
+ShrubberyCreationForm::~ShrubberyCreationForm( void ) {}

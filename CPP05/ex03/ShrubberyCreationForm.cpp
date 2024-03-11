@@ -62,3 +62,6 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 	target_file.close();
 }
 
+ShrubberyCreationForm::ShrubberyCreationForm( void ) : AForm() {}
+
+ShrubberyCreationForm::~ShrubberyCreationForm( void ) {}

@@ -2,6 +2,8 @@
 
 Bureaucrat::Bureaucrat ( void ) :  _grade( 150 ) {}
 
+Bureaucrat::~Bureaucrat() {}
+
 Bureaucrat::Bureaucrat ( std::string name, unsigned int grade ) : _name( name )
 {
 	if (grade > 150)
@@ -18,7 +20,8 @@ Bureaucrat::Bureaucrat ( const Bureaucrat& other ) : _name( other._name )
 
 Bureaucrat& Bureaucrat::operator=( const Bureaucrat& other )
 {
-	this->_grade = other._grade;
+	if (this != &other)
+		this->_grade = other._grade;
 	return (*this);
 }
 

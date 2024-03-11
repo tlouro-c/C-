@@ -10,7 +10,7 @@ class AForm {
 public:
 	AForm( std::string name, unsigned int signGrade, unsigned int execGrade );
 	AForm( const AForm& other );
-	virtual ~AForm( void ) {};
+	virtual ~AForm( void );
 	AForm& operator=( const AForm& other );
 	std::string 	getName() const;
 	bool			getIsSigned() const;

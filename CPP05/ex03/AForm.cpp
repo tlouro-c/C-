@@ -21,7 +21,8 @@ AForm::AForm( const AForm& other ) : _name( other._name ),
 
 AForm& AForm::operator=( const AForm& other )
 {
-	this->_isSigned = other._isSigned;
+	if (this != &other)
+		this->_isSigned = other._isSigned;
 	return (*this);
 }
 
@@ -61,6 +62,8 @@ std::ostream& operator<<( std::ostream& os, const AForm& AForm )
 	os << "Execution Grade " << AForm.getExecGrade() << "\n-" << std::endl;
 	return (os);
 }
+
+AForm::~AForm( void ) {}
 
 //* Nested Exception Classes
 

@@ -10,6 +10,7 @@ class Form {
 public:
 	Form( std::string name, unsigned int signGrade, unsigned int execGrade );
 	Form( Form& other );
+	~Form();
 	Form& operator=( Form& other );
 	std::string 	getName() const;
 	bool			getIsSigned() const;

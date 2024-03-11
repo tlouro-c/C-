@@ -3,6 +3,8 @@
 
 Form::Form( void ) : _isSigned ( false ), _signGrade( 150 ), _execGrade( 150 ) {}
 
+Form::~Form() {}
+
 Form::Form( std::string name, unsigned int signGrade, unsigned int execGrade ) : _name( name ),
 																				_isSigned( false ),
 																				_signGrade( signGrade ),
@@ -21,7 +23,8 @@ Form::Form( Form& other ) : _name( other._name ),
 
 Form& Form::operator=( Form& other )
 {
-	this->_isSigned = other._isSigned;
+	if (this != &other)
+		this->_isSigned = other._isSigned;
 	return (*this);
 }
 

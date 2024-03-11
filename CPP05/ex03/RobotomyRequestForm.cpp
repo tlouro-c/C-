@@ -26,3 +26,6 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const
 		std::cout << "Robotomy Failure..." << std::endl;
 }
 
+RobotomyRequestForm::RobotomyRequestForm( void ) : AForm() {};
+
+RobotomyRequestForm::~RobotomyRequestForm( void ) {};

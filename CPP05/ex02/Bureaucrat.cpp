@@ -3,6 +3,8 @@
 
 Bureaucrat::Bureaucrat ( void ) :  _grade( 150 ) {}
 
+Bureaucrat::~Bureaucrat ( void ) {}
+
 Bureaucrat::Bureaucrat ( std::string name, unsigned int grade ) : _name( name )
 {
 	if (grade > 150)
@@ -19,7 +21,8 @@ Bureaucrat::Bureaucrat ( const Bureaucrat& other ) : _name( other._name )
 
 Bureaucrat& Bureaucrat::operator=( const Bureaucrat& other )
 {
-	this->_grade = other._grade;
+	if (this != &other)
+		this->_grade = other._grade;
 	return (*this);
 }
 
@@ -57,8 +60,8 @@ void	Bureaucrat::signAForm( AForm& AForm )
 {
 	if (AForm.getSignGrade() < _grade){
 		std::cout << _name << " couldn't sign " << AForm.getName() << " because grade is too low..."<< std::endl; return;}
-	else{
-		std::cout << _name << " signed " << AForm.getName() << std::endl; return; }
+	else
+		std::cout << _name << " signed " << AForm.getName() << std::endl;
 	AForm.beSigned(*this);
 }
 
