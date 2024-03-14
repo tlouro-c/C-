@@ -1,13 +1,14 @@
 #ifndef SERIALIZER_HPP
 # define SERIALIZER_HPP
 
-#include <cstdint>
+# include <cstdint>
+# include <string>
 
 struct Data
 {
-	char	*name;
-	char	*instructions;
-	int		numEntries;
+	std::string	name;
+	std::string	instructions;
+	int			numEntries;
 };
 
 class Serializer {
