@@ -2,14 +2,7 @@
 # define SERIALIZER_HPP
 
 # include <cstdint>
-# include <string>
-
-struct Data
-{
-	std::string	name;
-	std::string	instructions;
-	int			numEntries;
-};
+# include "Data.hpp"
 
 class Serializer {
 public:
