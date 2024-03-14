@@ -4,7 +4,7 @@ static void	fromInt(std::string stringLiteral)
 {
 	try 
 	{
-		int representation = std::stoi(stringLiteral);
+		int representation = std::atoi(stringLiteral.c_str());
 		std::cout << "char: " ;
 		if (std::isprint(representation))
 			std::cout << "'" << static_cast<char>(representation) << "'\n";
@@ -14,7 +14,7 @@ static void	fromInt(std::string stringLiteral)
 		std::cout << "float: " << static_cast<float>(representation) << ".0f\n";
 		std::cout << "double: " << static_cast<double>(representation) << ".0" << std::endl;
 	}
-	catch (std::exception)
+	catch (std::exception&)
 	{
 		std::cout << "char: " << "impossible" << "\n";
 		std::cout << "int: " << "impossible" << "\n";
@@ -41,14 +41,14 @@ static void	fromFloat(std::string stringLiteral)
 {
 	try 
 	{
-		float representation = std::stof(stringLiteral);
+		float representation = std::atof(stringLiteral.c_str());
 		std::cout << "char: '" 
 		<< (std::isprint(representation) ? static_cast<char>(representation) : '?') << "'\n";
 		std::cout << "int: " << static_cast<int>(representation) << "\n";
 		std::cout << "float: " << representation << "f\n";
 		std::cout << "double: " << static_cast<double>(representation) << std::endl;
 	}
-	catch (std::exception)
+	catch (std::exception&)
 	{
 		std::cout << "char: " << "impossible" << "\n";
 		std::cout << "int: " << "impossible" << "\n";
@@ -61,14 +61,14 @@ static void	fromDouble(std::string stringLiteral)
 {
 	try 
 	{
-		double representation = std::stod(stringLiteral);
+		double representation = std::atof(stringLiteral.c_str());
 		std::cout << "char: '" 
 		<< (std::isprint(representation) ? static_cast<char>(representation) : '?') << "'\n";
 		std::cout << "int: " << static_cast<int>(representation) << "\n";
 		std::cout << "float: " << static_cast<float>(representation) << "f\n";
 		std::cout << "double: " << representation << std::endl;
 	}
-	catch (std::exception)
+	catch (std::exception&)
 	{
 		std::cout << "char: " << "impossible" << "\n";
 		std::cout << "int: " << "impossible" << "\n";
