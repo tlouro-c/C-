@@ -29,7 +29,7 @@ void	Span::addNumber(int number)
 {
 	if (_classVector.size() >= _maxSize)
 		throw NoRemainingSpace();
-	_classVector.emplace_back(number);
+	_classVector.push_back(number);
 }
 
 Span::Span(uint maxSize) 
