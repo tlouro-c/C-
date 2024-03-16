@@ -14,4 +14,5 @@ int main(void)
 	stringArray[0] = "Hello";
 
 	iter(stringArray, 1, print<std::string>);
+	delete[] stringArray;
 }
