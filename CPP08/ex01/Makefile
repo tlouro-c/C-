@@ -2,7 +2,8 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Span
 
-SRC = main.cpp
+SRC = main.cpp \
+	  Span.cpp
 
 OBJ = $(patsubst %.cpp, %.o, $(SRC))
 
