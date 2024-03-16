@@ -58,6 +58,10 @@
 		"fstream": "cpp",
 		"*.tcc": "cpp",
 		"*.tpp": "c",
-		"functional": "cpp"
+		"functional": "cpp",
+		"list": "cpp",
+		"__availability": "cpp",
+		"filesystem": "cpp",
+		"iterator": "cpp"
 	}
 }
