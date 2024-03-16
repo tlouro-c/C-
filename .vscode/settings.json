@@ -56,6 +56,8 @@
 		"vector": "cpp",
 		"algorithm": "cpp",
 		"fstream": "cpp",
-		"*.tcc": "cpp"
+		"*.tcc": "cpp",
+		"*.tpp": "c",
+		"functional": "cpp"
 	}
 }
