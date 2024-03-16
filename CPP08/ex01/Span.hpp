@@ -53,4 +53,12 @@ private:
 
 std::ostream& operator<<(std::ostream& os, Span& span);
 
+class BadInput : public std::exception {
+public:
+	const char* what() const throw()
+	{
+		return ("Why are you trying to break me ? This is not even mandadory...");
+	}
+};
+
 #endif

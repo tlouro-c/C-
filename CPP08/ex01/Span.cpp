@@ -65,6 +65,8 @@ void	Span::print(std::ostream& os)
 	for (std::vector<int>::iterator it = _classVector.begin()
 		; it != _classVector.end(); it++)
 		os << "[" << i++ << "] -> " << *it << "\n";
+	if (i == 0)
+		std::cout << "empty" << std::endl;
 	os << std::endl;
 }
 
