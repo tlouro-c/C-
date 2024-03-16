@@ -57,19 +57,19 @@ void identify(Base& p)
 		std::cout << "A" << std::endl;
 		return ;
 	}
-	catch (std::bad_cast&) {}
+	catch (std::exception&) {}
 	try
 	{
 		dummy = dynamic_cast<B&>(p);
 		std::cout << "B" << std::endl;
 		return ;
 	}
-	catch (std::bad_cast&) {}
+	catch (std::exception&) {}
 	try
 	{
 		dummy = dynamic_cast<C&>(p);
 		std::cout << "C" << std::endl;
 		return ;
 	}
-	catch (std::bad_cast&) {}
+	catch (std::exception&) {}
 }
