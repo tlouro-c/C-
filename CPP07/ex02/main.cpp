@@ -31,7 +31,6 @@ int	main(void)
 		{
 			std::cout << e.what() << std::endl;
 		}
-		
 	}
 	return (0);
 }
