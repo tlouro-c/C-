@@ -36,8 +36,10 @@ int	main(void)
 	catch (std::exception& e)
 	{
 		std::cout << "\nexception: " << e.what() << std::endl;
+		return (0);
 	}
-	//* Test for the betterAddNumber member function
+
+	std::cout << "\nTest for the betterAddNumber member function" << std::endl;
 	std::vector<int> testVector;
 
 	testVector.push_back(5);
@@ -54,3 +56,18 @@ int	main(void)
 		std::cout << "\nexception: " << e.what() << std::endl;
 	}
 }
+
+
+// //* Subject's main
+// int main()
+// {
+// 	Span sp = Span(5);
+// 	sp.addNumber(6);
+// 	sp.addNumber(3);
+// 	sp.addNumber(17);
+// 	sp.addNumber(9);
+// 	sp.addNumber(11);
+// 	std::cout << sp.shortestSpan() << std::endl;
+// 	std::cout << sp.longestSpan() << std::endl;
+// 	return 0; 
+// }
