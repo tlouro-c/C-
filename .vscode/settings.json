@@ -62,6 +62,10 @@
 		"list": "cpp",
 		"__availability": "cpp",
 		"filesystem": "cpp",
-		"iterator": "cpp"
+		"iterator": "cpp",
+		"stack": "cpp",
+		"deque": "cpp",
+		"memory": "cpp",
+		"version": "cpp"
 	}
 }
