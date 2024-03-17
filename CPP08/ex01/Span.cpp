@@ -25,6 +25,13 @@ int		Span::longestSpan()
 	return (*(tmp.end() - 1) - *tmp.begin());
 }
 
+void	Span::betterAddNumber(std::vector<int>::iterator begin,
+				std::vector<int>::iterator end)
+{
+	for (std::vector<int>::iterator it = begin; it != end; it++)
+		addNumber(*it);
+}
+
 void	Span::addNumber(int number)
 {
 	if (_classVector.size() >= _maxSize)
@@ -65,7 +72,6 @@ void	Span::print(std::ostream& os)
 		os << "[" << i++ << "] -> " << *it << "\n";
 	if (i == 0)
 		std::cout << "empty" << std::endl;
-	os << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, Span& span)
