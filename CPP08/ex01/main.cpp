@@ -10,12 +10,12 @@ int	main(void)
 	{
 		std::cout << "Insert max size -> ";
 		std::cin >> maxSize;
-		if (std::cin.fail())
+		if (std::cin.fail() || maxSize < 0)
 			throw BadInput();
 		std::cout << "Insert amount of random numbers -> ";
 		std::cin.ignore();
 		std::cin >> amountOfNumbers;
-		if (std::cin.fail())
+		if (std::cin.fail() || maxSize < 0)
 			throw BadInput();
 		std::cout << std::endl;
 	}

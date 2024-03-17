@@ -5,7 +5,7 @@
 # include <exception>
 # include <string>
 # include <algorithm>
-# include <limits>
+# include <climits>
 # include <iostream>
 # include <ctime>
 
@@ -40,13 +40,6 @@ private:
 		const char* what() const throw()
 		{
 			return ("not enough integers");
-		}
-	};
-	class InvalidMaxSize : public std::exception {
-	public:
-		const char* what() const throw()
-		{
-			return ("invalid max size");
 		}
 	};
 };

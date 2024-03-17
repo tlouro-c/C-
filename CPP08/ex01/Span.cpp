@@ -34,8 +34,6 @@ void	Span::addNumber(int number)
 
 Span::Span(uint maxSize) 
 {
-	if (maxSize < 0)
-		throw InvalidMaxSize();
 	_maxSize = maxSize;
 }
 

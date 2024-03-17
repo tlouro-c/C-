@@ -4,6 +4,7 @@
 # include <exception>
 # include <algorithm>
 # include <iostream>
+# include <vector>
 
 class OccorrenceNotFound : public std::exception {
 	const char* what() const throw()
