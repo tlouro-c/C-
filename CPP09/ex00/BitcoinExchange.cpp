@@ -37,19 +37,22 @@ void	ReadClosedPositionsFile
 		s_TransactionValues	TransactionValues = {0, 0, 0, false, false, ""};
 		line.erase(std::remove_if(line.begin(), line.end(), isspace), line.end());
 		std::stringstream	sline(line);
-		std::string			dateToken;
-		std::string			volumeToken;
+		std::string			dateToken = "";
+		std::string			volumeToken= "";
 
 		std::getline(sline, dateToken, '|');
 		parseDate(dateToken, TransactionValues.badDate);
 		std::getline(sline, volumeToken);
 		TransactionValues.volume = parseVolume(volumeToken, TransactionValues.badVolume);
 		BTCpriceHistoryIt it = BitcoinPriceHistory.lower_bound(dateToken);
-		if (it->first != dateToken && it != BitcoinPriceHistory.begin())
-			it--;
-		TransactionValues.priceReferenceDate = it->first;
-		TransactionValues.exchangeRate = it->second;
-		TransactionValues.total = TransactionValues.volume * TransactionValues.exchangeRate;
+		if (!TransactionValues.badDate && !TransactionValues.badVolume) {
+			if (it->first != dateToken && it != BitcoinPriceHistory.begin())
+				it--;
+			TransactionValues.priceReferenceDate = it->first;
+			TransactionValues.exchangeRate = it->second;
+			TransactionValues.total = TransactionValues.volume
+									* TransactionValues.exchangeRate;
+		}
 		std::cout << closedPositionsPair(dateToken, TransactionValues) << std::endl;
 	}
 	infile.close();
