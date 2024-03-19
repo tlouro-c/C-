@@ -6,7 +6,7 @@ void	ErrorMessage(const char* errorMessage, int errorCode)
 	std::exit(errorCode);
 }
 
-void	ReadDataFile(std::map<std::string, float>& BitcoinPriceHistory)
+void	ReadDataFile(std::map<int, float>& BitcoinPriceHistory)
 {
 	std::ifstream					CSVfile("data.csv");
 	std::string						line;
@@ -20,20 +20,25 @@ void	ReadDataFile(std::map<std::string, float>& BitcoinPriceHistory)
 
 		std::getline(sline, dateToken, ',');
 		std::getline(sline, priceToken);
-		BitcoinPriceHistory.insert(std::pair<std::string, float>
-			(dateToken, std::atof(priceToken.c_str())));
+		BitcoinPriceHistory.insert(std::pair<int, float>
+			(dateToValue(dateToken), std::atof(priceToken.c_str())));
 	}
 	CSVfile.close();
 }
 
 void	ReadClosedPositionsFile
-	(std::map<std::string, float> BitcoinPriceHistory, std::ifstream& infile)
+	(std::map<int, float> BitcoinPriceHistory, std::ifstream& infile)
 {
-	std::string						line;
+	std::string						line = "";
 
 	std::getline(infile, line);
+	if (line != "date | value")
+		throw "bad header";
+	line.clear();
 	while (getline(infile, line))
 	{
+		if (line.empty() || line.find_first_not_of("\f\n\r\t\v ") == line.npos)
+			continue ;
 		s_TransactionValues	TransactionValues = {0, 0, 0, false, false, ""};
 		line.erase(std::remove_if(line.begin(), line.end(), isspace), line.end());
 		std::stringstream	sline(line);
@@ -44,20 +49,21 @@ void	ReadClosedPositionsFile
 		parseDate(dateToken, TransactionValues.badDate);
 		std::getline(sline, volumeToken);
 		TransactionValues.volume = parseVolume(volumeToken, TransactionValues.badVolume);
-		BTCpriceHistoryIt it = BitcoinPriceHistory.lower_bound(dateToken);
-		if (!TransactionValues.badDate && !TransactionValues.badVolume) {
-			if (it->first != dateToken && it != BitcoinPriceHistory.begin())
+		BTCpriceHistoryIt it = BitcoinPriceHistory.lower_bound(dateToValue(dateToken));
+		if (!TransactionValues.badDate && !TransactionValues.badVolume
+			&& it != BitcoinPriceHistory.end()) {
+			if (it->first != dateToValue(dateToken) && it != BitcoinPriceHistory.begin())
 				it--;
-			TransactionValues.priceReferenceDate = it->first;
+			TransactionValues.priceReferenceDate = valueToDate(it->first);
 			TransactionValues.exchangeRate = it->second;
 			TransactionValues.total = TransactionValues.volume
 									* TransactionValues.exchangeRate;
 		}
 		std::cout << closedPositionsPair(dateToken, TransactionValues) << std::endl;
+		line.clear();
 	}
 	infile.close();
 }
-
 
 std::ostream& operator<<(std::ostream& os,
 	const std::pair<std::string, s_TransactionValues>& closedPositions)
@@ -79,23 +85,15 @@ std::ostream& operator<<(std::ostream& os,
 
 void	parseDate(std::string& date, bool& badDate)
 {
-	std::stringstream	sdate(date);
-	std::string			tmp;
-	char				*restYear;
-	char				*restMonth;
-	char				*restDay;
+	std::istringstream	sdate(date);
+	int year = 0, month = 0, day = 0;
+	char sep1, sep2, tmp;
 
-	std::getline(sdate, tmp, '-');
-	int year = std::strtol(tmp.c_str(), &restYear, 10);
-	std::getline(sdate, tmp, '-');
-	int month = std::strtol(tmp.c_str(), &restMonth, 10);
-	std::getline(sdate, tmp);
-	int day = std::strtol(tmp.c_str(), &restDay, 10);
-	if (year > 2024 || year < 2009 
-	|| month < 1 || month > 12 
-	|| day < 1 || day > 31
-	|| *restDay || *restMonth || *restYear || bad_day(year, month, day))
-		badDate = true;
+	if (!(sdate >> year >> sep1 >> month >> sep2 >> day) || sdate >> tmp
+		|| sep1 != '-' || sep2 != '-' || year > 2024 || year < 2009
+		||  month < 1 || month > 12 || bad_day(year, month, day)) {
+			badDate = true;
+	}
 }
 
 inline float	parseVolume(std::string volume, bool& badVolume)
@@ -103,7 +101,7 @@ inline float	parseVolume(std::string volume, bool& badVolume)
 	char* rest;
 
 	float f_volume = std::strtof(volume.c_str(), &rest);
-	if (*rest != '\0' || f_volume < 0 || f_volume > 1000)
+	if (*rest != '\0' || f_volume <= 0 || f_volume > 1000)
 		badVolume = true;
 	return (f_volume);
 }
@@ -114,7 +112,38 @@ bool	bad_day(int year, int month, int day)
 
 	if (year % 4 == 0)
 		months[1] = 29;
-	if (day > months[month - 1])
+	if (day > months[month - 1] || day < 1)
 		return (true);
 	return (false);
 }
+
+int	dateToValue(const std::string& date)
+{
+	std::istringstream	sdate(date);
+	int year = 0, month = 0, day = 0;
+	char sep1, sep2;
+
+	sdate >> year >> sep1 >> month >> sep2 >> day;
+	return (year * 10000 + month * 100 + day);
+}
+
+std::string valueToDate(const int& dateValue)
+{
+	std::ostringstream osdate;
+
+	int year = dateValue / 10000;
+	osdate << year << '-';
+
+	int month = (dateValue % 10000) / 100;
+	if (month < 10)
+		osdate << '0';
+	osdate << month << '-';
+
+	int day = dateValue % 100;
+	if (day < 10)
+		osdate << '0';
+	osdate << day;
+
+	return osdate.str();
+}
+

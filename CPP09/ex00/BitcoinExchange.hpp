@@ -20,18 +20,20 @@ struct s_TransactionValues
 	std::string	priceReferenceDate;
 };
 
-typedef std::map<std::string, float>::iterator BTCpriceHistoryIt;
+typedef std::map<int, float>::iterator BTCpriceHistoryIt;
 typedef std::pair<std::string, s_TransactionValues> closedPositionsPair;
 
 std::ostream& 	operator<<(std::ostream& os,
 	const std::pair<std::string, s_TransactionValues>& closedPositions);
 
 void			ErrorMessage(const char* errorMessage, int errorCode);
-void			ReadDataFile(std::map<std::string, float>& BitcoinPriceHistory);
+void			ReadDataFile(std::map<int, float>& BitcoinPriceHistory);
 void			ReadClosedPositionsFile
-	(std::map<std::string, float> BitcoinPriceHistory, std::ifstream& infile);
+	(std::map<int, float> BitcoinPriceHistory, std::ifstream& infile);
 void			parseDate(std::string& date, bool& badDate);
 float			parseVolume(std::string volume, bool& badVolume);
 bool			bad_day(int year, int month, int day);
+int				dateToValue(const std::string& date);
+std::string		valueToDate(const int& dateValue);
 
 #endif
