@@ -12,5 +12,6 @@ typedef std::stack<int> __intStack;
 void	ReversePolishNotationCalculator(__intStack& stack, std::string& expression);
 int		PeekAndPop(__intStack& stack);
 int		PerformOperation(int a, int b, char c);
+bool	spaceSeparated(std::string expression);
 
 #endif
