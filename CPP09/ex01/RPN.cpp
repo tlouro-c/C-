@@ -44,7 +44,7 @@ inline int	PeekAndPop(__intStack& stack)
 bool spaceSeparated(std::string expression)
 {
 	for (int i = 0; i < static_cast<int>(expression.size() - 1); i ++) {
-		if (!std::isspace(expression[i]) && !std::isspace(expression[i + 1])) { std::cout << "Parsing" << std::endl;
+		if (!std::isspace(expression[i]) && !std::isspace(expression[i + 1])) {
 			return (false); }
 	}
 	return (true);
