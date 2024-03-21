@@ -2,19 +2,29 @@
 
 int	main(int argc, char** argv)
 {
-	(void)argc;
-	(void)argv;
-	std::vector<int> myVector;
+	std::vector<int>	myVector;
+	std::list<int>		myList;
+	clock_t				sV, sL, eV, eL;
 
-	//myVector.push_back(5);
-	//myVector.push_back(10);
-	myVector.push_back(55);
-	myVector.push_back(12);
-	myVector.push_back(140);
-	myVector.push_back(15);
-	myVector.push_back(20);
-	myVector.push_back(100);
+	try {
+		fillContainers(myVector, myList, argc, argv); }
+	catch (const char* errorMessage) {
+		std::cout << errorMessage << std::endl;
+		return (1);
+	}
+	printContainer(myVector.begin(), myVector.end(), "Before:");
+	sV = std::clock();
+	fordJohnsonSort<std::vector<int>, PairsVector>(myVector);
+	eV = std::clock();
+	printContainer(myVector.begin(), myVector.end(), "After:");
 
+	sL = std::clock();
+	fordJohnsonSort<std::list<int>, PairsList>(myList);
+	eL = std::clock();
 
-	//MergeInsertionSortVector(myVector);
+	std::cout << "Time to process a range of " << argc - 1 << 
+		" elements with std::vector : " << timeSinceInUs(sV, eV) << " us" << std::endl;
+	std::cout << "Time to process a range of " << argc - 1 << 
+		" elements with std::list : " << timeSinceInUs(sL, eL) << " us" << std::endl;
+	return (0);
 }
