@@ -5,14 +5,27 @@
 # include <vector>
 # include <deque>
 # include <list>
-# include <chrono>
 # include <ctime>
 # include <iomanip>
-# include <iostream>
+# include <cstdlib>
 
 typedef std::vector< std::pair<int, int> > PairsVector;
 typedef std::deque< std::pair<int, int> > PairsDeque;
 typedef std::list< std::pair<int, int> > PairsList;
+
+template <typename It>
+It	myNext(It iterator, int	x = 1)
+{
+	std::advance(iterator, x);
+	return (iterator);
+}
+
+template <typename It>
+It	myPrev(It iterator, int	x = 1)
+{
+	std::advance(iterator, -x);
+	return (iterator);
+}
 
 template <typename T>
 double timeSinceInUs(T start, T end)
@@ -39,7 +52,7 @@ template <typename It>
 void	printContainer(const It& begin, const It& end, const char* preText)
 {
 	std::cout << preText;
-	for (It it = begin; it != end; it = std::next(it)) {
+	for (It it = begin; it != end; std::advance(it, 1)) {
 			std::cout << ' ' << *it;
 	}
 	std::cout << std::endl;
@@ -51,10 +64,10 @@ void	SortPairs(Iter begin, Iter end)
 	std::size_t size = std::distance(begin, end);
 
 	bool	leftOver = size % 2 != 0;
-	end = leftOver ? std::prev(end) : end;
-	for (Iter it = begin; it != end; it = std::next(it, 2)) {
-		if (*it > *(std::next(it)))
-			std::swap(*it, *(std::next(it)));
+	end = leftOver ? myPrev(end) : end;
+	for (Iter it = begin; it != end; std::advance(it, 2)) {
+		if (*it > *(myNext(it)))
+			std::swap(*it, *(myNext(it)));
 	}
 }
 
@@ -65,7 +78,7 @@ PairsContainer	ConvertToPairs(OriginalContainer& toSort)
 	
 	while (toSort.size() > 1)
 	{
-		Pairs.push_back(std::make_pair(*toSort.begin(), *std::next(toSort.begin())));
+		Pairs.push_back(std::make_pair(*toSort.begin(), *myNext(toSort.begin())));
 		toSort.erase(toSort.begin());
 		toSort.erase(toSort.begin());
 	}
@@ -98,9 +111,9 @@ Iter	binaryInsertion(T& value, const Iter& begin, const Iter& end,
 {
 	std::size_t size = std::distance(begin, end);
 	if (size <= 1) {
-		return (value > *begin) ? std::next(begin) : begin;
+		return (value > *begin) ? myNext(begin) : begin;
 	}
-	Iter mid = std::next(begin, size / 2);
+	Iter mid = myNext(begin, size / 2);
 	if (value < *mid)
 		return binaryInsertion(value, begin, mid, mainChain);
 	else
@@ -158,7 +171,7 @@ void	mergeSort(const It& begin,
 	if (size <= 1)
 		return ;
 	
-	It mid = std::next(begin, size / 2);
+	It mid = myNext(begin, size / 2);
 
 	mergeSort<ContainerType, It>(begin, mid);
 	mergeSort<ContainerType, It>(mid, end);
