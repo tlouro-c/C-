@@ -8,6 +8,7 @@
 # include <ctime>
 # include <iomanip>
 # include <cstdlib>
+# include <climits>
 
 typedef std::vector< std::pair<int, int> > PairsVector;
 typedef std::deque< std::pair<int, int> > PairsDeque;
