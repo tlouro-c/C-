@@ -41,10 +41,10 @@ void	fillContainers(C1& container1, C2& container2,
 
 	for (int i = 1; i < argc; i++) {
 		long	result = std::strtol(argv[i], &rest, 10);
-		if (result <= 0 || *rest)
+		if (result <= 0 || result > INT_MAX || *rest)
 			throw ("error: bad input...");
-		container1.push_back(result);
-		container2.push_back(result);
+		container1.push_back(static_cast<int>(result));
+		container2.push_back(static_cast<int>(result));
 	}
 }
 
