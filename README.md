@@ -18,8 +18,6 @@ Welcome to the CPP00 - CPP09 repository! This repository contains a series of mo
   <li> Introduction to file manipulation. </li>
    <li> Array of pointers to functions. </li>
 </ul>
-Overloading arithmetic, relational, and assignment operators
-Unary and binary operators
 
 ### CPP02: Operator overloading
 <ul>
