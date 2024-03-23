@@ -69,7 +69,7 @@ Unary and binary operators
   <li> Templates, inheritance, and containers mixed. </li>
 </ul>
 
-### CPP09: STL Containers
+### CPP09: Final Module
 <ul>
   <li> Final project integrating concepts learned throughout the modules.</li>
 </ul>
