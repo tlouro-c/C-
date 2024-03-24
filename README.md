@@ -23,9 +23,6 @@ Welcome to the CPP00 - CPP09 repository! This repository contains a series of mo
 <ul>
   <li> Orthodox Canonical Form, constructors and destructors. </li>
   <li> Understanding and implementing operator overloading.</li>
-  <li> Pointers Vs References in C++. </li>
-  <li> Introduction to file manipulation. </li>
-   <li> Array of pointers to functions. </li>
 </ul>
 
 ### CPP03: Inheritance
