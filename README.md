@@ -47,7 +47,7 @@ Welcome to the CPP00 - CPP09 repository! This repository contains a series of mo
 
 ### CPP06: Casting
 <ul>
-  <li> Type casting in C++ (static_cast, reinterpret_cast and dynamic_cast) </li>
+  <li> Type casting in C++ (static_cast, reinterpret_cast and dynamic_cast). </li>
 </ul>
 
 ### CPP07: Templates
